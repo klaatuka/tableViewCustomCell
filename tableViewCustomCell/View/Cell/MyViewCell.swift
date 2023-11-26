@@ -91,6 +91,10 @@ class MyViewCell: UITableViewCell {
         let ratio = (postImage.image?.size.height ?? 0) / (postImage.image?.size.width ?? 0)
         let imageHeight = (self.frame.width - 20) * ratio
         
+        let heightConstraint = postImage.heightAnchor.constraint(equalToConstant: imageHeight)
+        heightConstraint.priority = UILayoutPriority(999)
+        heightConstraint.isActive = true
+        
         let tapGesture1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         callIcon.isUserInteractionEnabled = true
         callIcon.addGestureRecognizer(tapGesture1)
@@ -109,7 +113,7 @@ class MyViewCell: UITableViewCell {
             postImage.topAnchor.constraint(equalTo: cellView.topAnchor),
             postImage.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
             postImage.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
-            postImage.heightAnchor.constraint(equalToConstant: imageHeight),
+//            postImage.heightAnchor.constraint(equalToConstant: imageHeight),
             
             hStack.topAnchor.constraint(equalTo: postImage.bottomAnchor, constant: 17),
             hStack.leadingAnchor.constraint(equalTo: cellView.leadingAnchor,constant: 34),

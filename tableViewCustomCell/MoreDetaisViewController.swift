@@ -2,7 +2,9 @@
 import UIKit
 
 class MoreDetaisViewController: UIViewController {
+    
     var selectedItem: TableData?
+    
     lazy var userName: UILabel = {
         .config(view: $0) {
             $0.font = .systemFont(ofSize: 20, weight: .bold)
