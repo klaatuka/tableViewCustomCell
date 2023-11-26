@@ -13,6 +13,11 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        //меняю цвет тайтла на переходящем экране и текст кнопки BACK - НАЗАД
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
+        let customBackButton = UIBarButtonItem()
+        customBackButton.title = "Назад"
+        navigationItem.backBarButtonItem = customBackButton
     }
 }
 

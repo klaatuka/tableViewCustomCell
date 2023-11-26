@@ -55,7 +55,7 @@ class MyViewCell: UITableViewCell {
     
     private lazy var postText: UILabel = {
         .config(view: $0) {
-            $0.numberOfLines = 0
+            $0.numberOfLines = 5
             $0.text = ""
         }
     }(UILabel())
