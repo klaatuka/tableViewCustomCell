@@ -2,6 +2,7 @@ import UIKit
 
 final class ViewController: UIViewController {
     private var items: [TableData] = TableData.getTableData()
+    var refresh = UIRefreshControl()
     lazy var tableView: UITableView = {
         .config(view: $0) {
             $0.dataSource = self
@@ -13,11 +14,26 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        tableView.addSubview(refresh)
+        refresh.addTarget(self, action: #selector(refreAct), for: .valueChanged)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(plusBtnAct))
         //меняю цвет тайтла на переходящем экране и текст кнопки BACK - НАЗАД
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.blue]
         let customBackButton = UIBarButtonItem()
         customBackButton.title = "Назад"
         navigationItem.backBarButtonItem = customBackButton
+    }
+    
+    @objc func refreAct(){
+        print("refresh")
+        
+        refresh.endRefreshing()
+    }
+    @objc func plusBtnAct() {
+        print(2)
+        items.append(TableData.init(name: "Добавляю с плюса", photo: "img1", text: "Просто тестирую как добавить новую ячейку через кнопку плюс"))
+        tableView.reloadData()
     }
 }
 

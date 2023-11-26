@@ -43,8 +43,8 @@ class MoreDetaisViewController: UIViewController {
         view.addSubview(scroll)
         scroll.addSubview(scrollView)
         
-        navigationItem.title = selectedItem?.name
-   
+        navigationItem.title = "More abaut " + (selectedItem?.name ?? "")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(closeBtnAct))
         scrollView.addSubview(image)
         scrollView.addSubview(userName)
         scrollView.addSubview(text)
@@ -79,5 +79,9 @@ class MoreDetaisViewController: UIViewController {
             text.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
             text.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
         ])
+    }
+    @objc func closeBtnAct() {
+        print(2)
+        navigationController?.popViewController(animated: true)
     }
 }
